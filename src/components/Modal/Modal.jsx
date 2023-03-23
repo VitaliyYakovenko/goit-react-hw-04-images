@@ -11,7 +11,7 @@ export default function Modal({modalImg, closeModal}) {
         window.addEventListener("keydown", hendleKeydown);
        
         return (() => window.removeEventListener("keydown", hendleKeydown)); 
-    })
+    }, [modalImg])
 
     const hendleKeydown = (e) => {
         if (e.code === "Escape") {

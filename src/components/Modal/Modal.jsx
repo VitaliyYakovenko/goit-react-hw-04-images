@@ -2,19 +2,16 @@ import {useEffect} from "react";
 import { createPortal } from "react-dom";
 import PropTypes from 'prop-types';
 import css from "./Modal.module.css"
-
 const modalRoot = document.getElementById("modal-root");
 
 
 export default function Modal({modalImg, closeModal}) {
-    
-
 
     useEffect(() => {
         window.addEventListener("keydown", hendleKeydown);
        
         return (() => window.removeEventListener("keydown", hendleKeydown)); 
-    },[])
+    },[closeModal])
 
     const hendleKeydown = (e) => {
         if (e.code === "Escape") {

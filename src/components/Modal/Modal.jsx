@@ -6,24 +6,26 @@ const modalRoot = document.getElementById("modal-root");
 
 
 export default function Modal({modalImg, closeModal}) {
-
-    useEffect(() => {
-        window.addEventListener("keydown", hendleKeydown);
-       
-        return (() => window.removeEventListener("keydown", hendleKeydown)); 
-    }, [hendleKeydown])
-
+   
+    
     const hendleKeydown = (e) => {
         if (e.code === "Escape") {
         closeModal();
         }
     } 
-    
-    const hendBackropClick = (e) => {
+ 
+  const hendBackropClick = (e) => {
         if (e.currentTarget === e.target) {
            closeModal()
        }
     }
+
+    useEffect(() => {
+        window.addEventListener("keydown", hendleKeydown);
+       
+        return (() => window.removeEventListener("keydown", hendleKeydown)); 
+    }, [hendleKeydown,hendBackropClick])
+
   
     {
         return createPortal(<div onClick={hendBackropClick} className={css.overlay}>
